@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="20dp"
+    android:backgroundTint="#FFA0AA">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            tools:src="@tools:sample/avatars"
+            android:id="@+id/ivMagicCardView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivMagicCardView"
+            app:layout_constraintTop_toTopOf="@id/ivMagicCardView"
+            android:id="@+id/tvCardNameHandle"
+            android:textSize="20sp"
+            android:text="Name: "
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@id/tvCardNameHandle"
+            app:layout_constraintTop_toTopOf="@id/tvCardNameHandle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvCardNameHandle"
+            android:id="@+id/tvCardName"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCMCHandle"
+            app:layout_constraintTop_toBottomOf="@id/tvCardNameHandle"
+            app:layout_constraintStart_toEndOf="@id/ivMagicCardView"
+            android:text="CMC"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/tvCMC"
+            app:layout_constraintStart_toEndOf="@id/tvCMCHandle"
+            app:layout_constraintTop_toTopOf="@id/tvCMCHandle"
+            app:layout_constraintBottom_toBottomOf="@id/tvCMCHandle"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/tvManaCost"
+            app:layout_constraintTop_toTopOf="@id/tvCMCHandle"
+            app:layout_constraintBottom_toBottomOf="@id/tvCMCHandle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvCMC"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0sp"
+            app:layout_constraintTop_toBottomOf="@id/tvCMCHandle"
+            app:layout_constraintStart_toEndOf="@id/ivMagicCardView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tvRulesText"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
