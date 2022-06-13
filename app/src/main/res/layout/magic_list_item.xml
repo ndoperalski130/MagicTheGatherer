@@ -12,20 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             tools:src="@tools:sample/avatars"
             android:id="@+id/ivMagicCardView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="non" />
+            android:contentDescription="non" />-->
+
+        <WebView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/wvTestWebView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fitsSystemWindows="true"
+            android:backgroundTint="#FFA0AA"
+            tools:ignore="WebViewLayout" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/ivMagicCardView"
-            app:layout_constraintTop_toTopOf="@id/ivMagicCardView"
+            app:layout_constraintStart_toEndOf="@id/wvTestWebView"
+            app:layout_constraintTop_toTopOf="@id/wvTestWebView"
             android:id="@+id/tvCardNameHandle"
             android:textSize="20sp"
             android:text="Name: "
@@ -48,7 +58,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvCMCHandle"
             app:layout_constraintTop_toBottomOf="@id/tvCardNameHandle"
-            app:layout_constraintStart_toEndOf="@id/ivMagicCardView"
+            app:layout_constraintStart_toEndOf="@id/wvTestWebView"
             android:text="CMC"
             android:textSize="20sp"
             />
@@ -77,7 +87,7 @@
             android:layout_width="0dp"
             android:layout_height="0sp"
             app:layout_constraintTop_toBottomOf="@id/tvCMCHandle"
-            app:layout_constraintStart_toEndOf="@id/ivMagicCardView"
+            app:layout_constraintStart_toEndOf="@id/wvTestWebView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/tvRulesText"

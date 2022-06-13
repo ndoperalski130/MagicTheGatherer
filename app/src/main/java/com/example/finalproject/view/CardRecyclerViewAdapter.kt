@@ -1,7 +1,14 @@
 package com.example.finalproject.view
 
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
+import android.media.Image
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.core.view.drawToBitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -22,17 +29,28 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
         fun onBind(card: CardObject)
         {
             val jaceUrl = card.imageUrl
-            jaceUrl.replace("http", "https")
+            //jaceUrl.replace("http", "https")
             println(jaceUrl)
-            Glide.with(binding.ivMagicCardView)
+            /*Glide.with(binding.ivMagicCardView)
                 .load(jaceUrl)
                 .error(android.R.drawable.stat_notify_error)
-                .into(binding.ivMagicCardView)
+                .into(binding.ivMagicCardView)*/
 
+            // this next stuff sucks ass
+            // implement better webviews google >:(
+
+            binding.wvTestWebView.loadUrl(card.imageUrl)
+            binding.wvTestWebView.settings.javaScriptEnabled = true
+            binding.wvTestWebView.settings.loadWithOverviewMode = true
+            binding.wvTestWebView.settings.useWideViewPort = true
+
+            binding.wvTestWebView.webViewClient = WebViewClient()
 
             println(card.cmc)
-            binding.tvCMC.text = card.cmc.toString()
+            //binding.tvCMC.text = card.cmc.toString()
+            binding.tvManaCost.text = card.manaCost
             binding.tvCardName.text = card.name
+            binding.tvRulesText.text = card.text
 
             binding.root.setOnClickListener {
                 openCardDetails(card)
