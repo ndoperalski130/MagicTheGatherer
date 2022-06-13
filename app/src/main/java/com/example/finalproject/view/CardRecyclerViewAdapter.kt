@@ -21,10 +21,11 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
     {
         fun onBind(card: CardObject)
         {
-            val jaceUrl = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=489729&type=card"
-            println(card.imageUrl)
+            val jaceUrl = card.imageUrl
+            jaceUrl.replace("http", "https")
+            println(jaceUrl)
             Glide.with(binding.ivMagicCardView)
-                .load(card.imageUrl)
+                .load(jaceUrl)
                 .error(android.R.drawable.stat_notify_error)
                 .into(binding.ivMagicCardView)
 
