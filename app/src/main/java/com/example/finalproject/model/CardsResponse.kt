@@ -1,9 +1,13 @@
 package com.example.finalproject.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class CardsResponse(
     val cards : List<CardObject>
 )
 
+@Parcelize
 data class CardObject(
     val name: String,
     val manaCost: String,
@@ -31,13 +35,15 @@ data class CardObject(
     val originalType: String,
     val legalities: List<LegalityObject>,
     val id: String
-)
+) : Parcelable
 
+@Parcelize
 data class LegalityObject(
     val format: String,
     val legality: String
-)
+) : Parcelable
 
+@Parcelize
 data class ForeignCardObject(
     val name: String,
     val text: String,
@@ -46,7 +52,7 @@ data class ForeignCardObject(
     val imageUrl: String,
     val language: String,
     val multiverseid: String
-)
+) : Parcelable
 
 data class Card(
     val cards: List<CardX>

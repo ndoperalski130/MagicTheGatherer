@@ -12,7 +12,8 @@ import com.example.finalproject.model.Card
 import com.example.finalproject.model.CardObject
 import com.example.finalproject.model.CardsResponse
 
-class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutableListOf())
+class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutableListOf(),
+                                private val openCardDetails: (CardObject) -> Unit)
     : RecyclerView.Adapter<CardRecyclerViewAdapter.CardViewHolder>()
 
 {
@@ -33,7 +34,7 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
             binding.tvCardName.text = card.name
 
             binding.root.setOnClickListener {
-
+                openCardDetails(card)
             }
         }
     }

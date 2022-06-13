@@ -54,7 +54,7 @@ class SearchFragment : Fragment() {
             }
             else
             {
-                cardRecyclerViewAdapter = CardRecyclerViewAdapter()
+                cardRecyclerViewAdapter = CardRecyclerViewAdapter(openCardDetails = ::openCardDetails)
                 cardRecyclerViewAdapter.addNewCards(response.cards)
                 binding.rvMagicRecyclerView.adapter = cardRecyclerViewAdapter
             }
@@ -64,7 +64,9 @@ class SearchFragment : Fragment() {
     private fun openCardDetails(card: CardObject)
     {
         parentFragmentManager.beginTransaction()
-            .replace(R.id.fcvContainer, )
+            .replace(R.id.fcvContainer, DetailsFragment.newInstance(card))
+            .addToBackStack("")
+            .commit()
     }
 
 }
