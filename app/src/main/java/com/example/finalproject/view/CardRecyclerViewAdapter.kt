@@ -1,5 +1,6 @@
 package com.example.finalproject.view
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -37,10 +38,8 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CardRecyclerViewAdapter.CardViewHolder {
-
-        TODO("Not yet implemented")
-    }
+    ): CardRecyclerViewAdapter.CardViewHolder = CardViewHolder(MagicListItemBinding.inflate(
+        LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: CardRecyclerViewAdapter.CardViewHolder, position: Int) {
         holder.onBind(list[position])
@@ -48,6 +47,7 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
     }
 
     override fun getItemCount(): Int {
+        return list.size
         TODO("Not yet implemented")
     }
 }
