@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentSearchBinding
 import com.example.finalproject.model.CardObject
 import com.example.finalproject.repository.CardsRepositoryImpl
@@ -58,6 +59,12 @@ class SearchFragment : Fragment() {
                 binding.rvMagicRecyclerView.adapter = cardRecyclerViewAdapter
             }
         }
+    }
+
+    private fun openCardDetails(card: CardObject)
+    {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fcvContainer, )
     }
 
 }

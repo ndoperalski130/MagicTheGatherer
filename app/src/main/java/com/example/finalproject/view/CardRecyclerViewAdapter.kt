@@ -31,6 +31,10 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
             println(card.cmc)
             binding.tvCMC.text = card.cmc.toString()
             binding.tvCardName.text = card.name
+
+            binding.root.setOnClickListener {
+
+            }
         }
     }
 
