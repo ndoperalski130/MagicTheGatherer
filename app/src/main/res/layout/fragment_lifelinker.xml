@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:enabled="true"
+        android:id="@+id/btnDecrementButton"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        />
 
    <TextView
        android:layout_width="wrap_content"
@@ -13,28 +23,23 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        android:textSize="70sp"
+       android:layout_gravity="center"
+       android:textAlignment="center"
        android:text="40"
        android:id="@+id/tvTotalLife"
+       android:layout_weight="10"
        />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="visible"
-        android:enabled="true"
-        android:id="@+id/btnDecrementButton"
-        />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:visibility="visible"
         android:enabled="true"
         android:id="@+id/btnIncrementButton"
+        android:layout_gravity="end"
+        android:layout_weight="1"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -23,10 +23,12 @@ class SearchFragment : Fragment() {
     private val cardViewModel: CardViewModel by lazy {
         object : ViewModelProvider.Factory{
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return CardViewModel(CardsRepositoryImpl()) as T
+                return CardViewModel(binding.etSearchName.text.toString(), null, CardsRepositoryImpl()) as T
             }
         }.create(CardViewModel::class.java)
     }
+
+    private lateinit var cardViewModel2 : CardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,10 +36,15 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
-        configureObserver()
+
+        cardViewModel2 = CardViewModel(binding.etSearchName.text.toString(), null, CardsRepositoryImpl())
+
+        binding.btnLookupCardButton.setOnClickListener {
+            configureObserver()
+        }
+        //configureObserver()
         return binding.root
     }
-
 
 
     override fun onDestroyView() {
@@ -47,7 +54,26 @@ class SearchFragment : Fragment() {
 
     private fun configureObserver()
     {
-        cardViewModel.cards.observe(viewLifecycleOwner){response ->
+        if(!binding.etSearchName.text.isNullOrBlank() && binding.spinRarity.selectedItem.toString() == "Select rarity...")
+        {
+            cardViewModel2 = CardViewModel(binding.etSearchName.text.toString(), null ,CardsRepositoryImpl())
+            cardViewModel2.cards.observe(viewLifecycleOwner){response ->
+                if(response.cards.isEmpty())
+                {
+                    binding.etSearchName.hint = "Error"
+                }
+                else
+                {
+                    cardRecyclerViewAdapter = CardRecyclerViewAdapter(openCardDetails = ::openCardDetails)
+                    cardRecyclerViewAdapter.addNewCards(response.cards)
+                    binding.rvMagicRecyclerView.adapter = cardRecyclerViewAdapter
+                }
+            }
+        }
+        else if(binding.etSearchName.text.isNullOrBlank() && binding.spinRarity.selectedItem.toString() != "Select rarity...")
+        {
+            cardViewModel2 = CardViewModel(null, binding.spinRarity.selectedItem.toString() ,CardsRepositoryImpl())
+            cardViewModel2.cards.observe(viewLifecycleOwner){response ->
             if(response.cards.isEmpty())
             {
                 binding.etSearchName.hint = "Error"
@@ -59,13 +85,27 @@ class SearchFragment : Fragment() {
                 binding.rvMagicRecyclerView.adapter = cardRecyclerViewAdapter
             }
         }
+        }
+//        cardViewModel2 = CardViewModel(binding.etSearchName.text.toString(), null ,CardsRepositoryImpl())
+//        cardViewModel2.cards.observe(viewLifecycleOwner){response ->
+//            if(response.cards.isEmpty())
+//            {
+//                binding.etSearchName.hint = "Error"
+//            }
+//            else
+//            {
+//                cardRecyclerViewAdapter = CardRecyclerViewAdapter(openCardDetails = ::openCardDetails)
+//                cardRecyclerViewAdapter.addNewCards(response.cards)
+//                binding.rvMagicRecyclerView.adapter = cardRecyclerViewAdapter
+//            }
+//        }
     }
 
     private fun openCardDetails(card: CardObject)
     {
         parentFragmentManager.beginTransaction()
             .replace(R.id.fcvContainer, DetailsFragment.newInstance(card))
-            .addToBackStack("")
+            .addToBackStack("detailsFragment")
             .commit()
     }
 

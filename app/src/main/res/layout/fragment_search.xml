@@ -8,6 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/layoutTop"
         >
 
         <TextView
@@ -30,14 +32,49 @@
             android:hint="Card Name"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvRarityHandle"
+            android:text="Rarity"
+            android:textSize="40sp"
+            app:layout_constraintTop_toBottomOf="@id/tvSearchNameHandle"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinRarity"
+            android:entries="@array/rarities"
+            app:layout_constraintTop_toTopOf="@id/tvRarityHandle"
+            app:layout_constraintBottom_toBottomOf="@id/tvRarityHandle"
+            app:layout_constraintStart_toEndOf="@id/tvRarityHandle"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@id/tvRarityHandle"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLookupCardButton"
+            android:text="Find cards"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutTop"
         android:id="@+id/spacer"
         />
 

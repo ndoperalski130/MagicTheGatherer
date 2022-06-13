@@ -10,10 +10,19 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CardViewModel(private val repoID: CardsRepositoryImpl) : ViewModel() {
+class CardViewModel(
+    name: String?,
+    rarity: String?,
+    private val repoID: CardsRepositoryImpl) : ViewModel() {
 
     init {
-        getCardWithName("jace")
+        if (name != null) {
+            getCardWithName(name)
+        }
+        else if (rarity != null)
+        {
+            getCardWithRarity(rarity)
+        }
     }
 
     private val _cards = MutableLiveData<CardsResponse>()
@@ -24,6 +33,14 @@ class CardViewModel(private val repoID: CardsRepositoryImpl) : ViewModel() {
     {
         CoroutineScope(Dispatchers.IO).launch {
             val response = repoID.getCardWithName(name)
+            _cards.postValue(response)
+        }
+    }
+
+    private fun getCardWithRarity(rarity: String)
+    {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repoID.getCardWithRarity(rarity)
             _cards.postValue(response)
         }
     }

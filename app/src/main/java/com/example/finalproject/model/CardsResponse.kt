@@ -23,6 +23,7 @@ data class CardObject(
     val text: String,
     val artist: String,
     val number: String,
+    val rulings: List<Ruling>,
     val power: String?,             // instant
     val toughness: String?,         // sorcery have no PT
     val layout: String,
@@ -105,7 +106,8 @@ data class Legality(
     val legality: String
 )
 
+@Parcelize
 data class Ruling(
     val date: String,
     val text: String
-)
+) : Parcelable

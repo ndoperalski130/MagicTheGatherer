@@ -18,6 +18,11 @@ interface MagicAPI {
         @Query(NAME) name: String?
     ) : Response<CardsResponse>
 
+    @GET("cards")
+    suspend fun getCardWithRarity(
+        @Query(RARITY) rarity: String?
+    ) : Response<CardsResponse>
+
     companion object
     {
         const val BASEURL = "http://api.magicthegathering.io/v1/"

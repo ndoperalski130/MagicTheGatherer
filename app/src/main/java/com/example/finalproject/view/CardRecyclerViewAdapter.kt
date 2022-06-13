@@ -40,7 +40,7 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
             // implement better webviews google >:(
 
             binding.wvTestWebView.loadUrl(card.imageUrl)
-            binding.wvTestWebView.settings.javaScriptEnabled = true
+            binding.wvTestWebView.settings.javaScriptEnabled = false
             binding.wvTestWebView.settings.loadWithOverviewMode = true
             binding.wvTestWebView.settings.useWideViewPort = true
 
