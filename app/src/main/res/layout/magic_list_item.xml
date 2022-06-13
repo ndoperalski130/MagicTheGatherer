@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="10dp"
-    android:layout_margin="20dp"
+    android:layout_margin="5dp"
     android:backgroundTint="#FFA0AA">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
             android:id="@+id/ivMagicCardView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            android:contentDescription="non" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,6 +34,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:textSize="20sp"
+            android:ellipsize="end"
             app:layout_constraintStart_toEndOf="@id/tvCardNameHandle"
             app:layout_constraintTop_toTopOf="@id/tvCardNameHandle"
             app:layout_constraintEnd_toEndOf="parent"

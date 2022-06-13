@@ -31,11 +31,15 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "Toast", Toast.LENGTH_LONG).show()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fcvContainer, LifelinkerFragment())
-                .addToBackStack("")
+                .addToBackStack("lifelinker")
                 .commit()
         }
         binding.btnSearchButton.setOnClickListener {
             Toast.makeText(context, "Search", Toast.LENGTH_LONG).show()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fcvContainer, SearchFragment())
+                .addToBackStack("search")
+                .commit()
 
         }
 

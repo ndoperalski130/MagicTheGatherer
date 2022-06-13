@@ -13,14 +13,14 @@ interface MagicAPI {
     http://api.magicthegathering.io/v1/cards
      */
 
-    @GET(NAME)
+    @GET("cards")
     suspend fun getCardWithName(
         @Query(NAME) name: String?
     ) : Response<CardsResponse>
 
     companion object
     {
-        const val BASEURL = "http://api.magicthegathering.io/v1/cards"
+        const val BASEURL = "http://api.magicthegathering.io/v1/"
         private var instance : MagicAPI? = null
 
         fun getService() : MagicAPI

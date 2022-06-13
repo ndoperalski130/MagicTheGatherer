@@ -12,6 +12,10 @@ import kotlinx.coroutines.launch
 
 class CardViewModel(private val repoID: CardsRepositoryImpl) : ViewModel() {
 
+    init {
+        getCardWithName("jace")
+    }
+
     private val _cards = MutableLiveData<CardsResponse>()
 
     val cards : LiveData<CardsResponse> get() = _cards

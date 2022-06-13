@@ -7,7 +7,7 @@ data class CardsResponse(
 data class CardObject(
     val name: String,
     val manaCost: String,
-    val cmc: Int,
+    val cmc: Double,
     val colors: List<String>,
     val colorIdentity: List<String>,
     val type: String,
@@ -29,8 +29,13 @@ data class CardObject(
     val printings: List<String>,
     val originalText: String,
     val originalType: String,
-    val legalities: List<String>,
+    val legalities: List<LegalityObject>,
     val id: String
+)
+
+data class LegalityObject(
+    val format: String,
+    val legality: String
 )
 
 data class ForeignCardObject(

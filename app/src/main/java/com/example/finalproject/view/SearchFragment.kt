@@ -37,6 +37,8 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -44,15 +46,15 @@ class SearchFragment : Fragment() {
 
     private fun configureObserver()
     {
-        cardViewModel.cards.observe(viewLifecycleOwner){
-            if(it.cards.isNullOrEmpty())
+        cardViewModel.cards.observe(viewLifecycleOwner){response ->
+            if(response.cards.isEmpty())
             {
-                binding.etSearchName.setText("Error")
+                binding.etSearchName.hint = "Error"
             }
             else
             {
-                cardRecyclerViewAdapter = CardRecyclerViewAdapter(it.cards as MutableList<CardObject>)
-                cardRecyclerViewAdapter.addNewCards(it.cards)
+                cardRecyclerViewAdapter = CardRecyclerViewAdapter()
+                cardRecyclerViewAdapter.addNewCards(response.cards)
                 binding.rvMagicRecyclerView.adapter = cardRecyclerViewAdapter
             }
         }
