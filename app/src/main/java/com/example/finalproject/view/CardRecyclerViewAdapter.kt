@@ -40,6 +40,7 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
             // implement better webviews google >:(
 
 
+            // if our imageurl isn't blank or null, there's an image for the card
             if(!card.imageUrl.isNullOrBlank())
             {
                 binding.wvTestWebView.loadUrl(card.imageUrl)
@@ -54,16 +55,20 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
 
             //println(card.cmc)
             //binding.tvCMC.text = card.cmc.toString()
+
+            // assign the data to the views :D
             binding.tvManaCost.text = card.manaCost
             binding.tvCardName.text = card.name
             binding.tvRulesText.text = card.text
 
+            // open more details about the card
             binding.root.setOnClickListener {
                 openCardDetails(card)
             }
         }
     }
 
+    // add all our new cards to the empty list
     fun addNewCards(newCards: List<CardObject>)
     {
         list.clear()

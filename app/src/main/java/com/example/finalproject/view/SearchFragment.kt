@@ -20,13 +20,13 @@ class SearchFragment : Fragment() {
 
     private lateinit var cardRecyclerViewAdapter: CardRecyclerViewAdapter
 
-    private val cardViewModel: CardViewModel by lazy {
+    /*private val cardViewModel: CardViewModel by lazy {
         object : ViewModelProvider.Factory{
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return CardViewModel(binding.etSearchName.text.toString(), null, CardsRepositoryImpl()) as T
             }
         }.create(CardViewModel::class.java)
-    }
+    }*/
 
     private lateinit var cardViewModel2 : CardViewModel
 
@@ -37,7 +37,7 @@ class SearchFragment : Fragment() {
     ): View? {
         _binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
 
-        cardViewModel2 = CardViewModel(binding.etSearchName.text.toString(), null, CardsRepositoryImpl())
+        //cardViewModel2 = CardViewModel(binding.etSearchName.text.toString(), null, CardsRepositoryImpl())
 
         binding.btnLookupCardButton.setOnClickListener {
             configureObserver()

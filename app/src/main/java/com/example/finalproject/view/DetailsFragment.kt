@@ -33,11 +33,14 @@ class DetailsFragment(private val card: CardObject) : Fragment() {
     ): View? {
         _binding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
 
-
+        // binding the data to the views
         binding.tvDetailsCardName.text = card.name
         binding.tvDetailsManaCost.text = card.manaCost
         binding.tvDetailsText.text = card.text
         binding.tvType.text = card.type
+
+        // rulings text might have multiple instances of rulings
+        // loooooooooooop
         var rulingText: String = "Rulings: "
         if(!card.rulings.isNullOrEmpty())
         {
@@ -47,11 +50,13 @@ class DetailsFragment(private val card: CardObject) : Fragment() {
             }
         }
 
-
+        // more data binding
         binding.tvDetailsRulings.text = rulingText
         binding.tvDetailsRarity.text = card.rarity
         binding.tvFlavorText.text = card.flavor
 
+        // hey remember that stupid webview thing
+        // it's back
         binding.wvDetailsWebView.loadUrl(card.imageUrl)
         binding.wvDetailsWebView.settings.javaScriptEnabled = true
         binding.wvDetailsWebView.settings.loadWithOverviewMode = true
