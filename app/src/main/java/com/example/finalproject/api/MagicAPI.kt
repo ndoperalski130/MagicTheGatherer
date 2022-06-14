@@ -43,7 +43,7 @@ interface MagicAPI {
 
         const val NAME = "name"
         const val RARITY = "rarity"
-        const val CMC = 0.0
+        const val CMC = "cmc"
     }
 
 }
