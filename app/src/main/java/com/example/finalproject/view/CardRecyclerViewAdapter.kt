@@ -28,6 +28,9 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
     {
         fun onBind(card: CardObject)
         {
+            // note
+            // Glide does NOT work with webpages
+
             //val jaceUrl = card.imageUrl
             //jaceUrl.replace("http", "https")
             //println(jaceUrl)
@@ -36,9 +39,8 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
                 .error(android.R.drawable.stat_notify_error)
                 .into(binding.ivMagicCardView)*/
 
-            // this next stuff sucks ass
+            // this next stuff sucks
             // implement better webviews google >:(
-
 
             // if our imageurl isn't blank or null, there's an image for the card
             if(!card.imageUrl.isNullOrBlank())
@@ -84,11 +86,13 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
         parent,
         false))
 
+    // call the viewHolder onBind here
     override fun onBindViewHolder(holder: CardRecyclerViewAdapter.CardViewHolder, position: Int) {
         holder.onBind(list[position])
 
     }
 
+    // get the size of our list
     override fun getItemCount(): Int {
         return list.size
 
