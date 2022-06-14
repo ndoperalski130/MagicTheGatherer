@@ -49,6 +49,8 @@ class DetailsFragment(private val card: CardObject) : Fragment() {
 
 
         binding.tvDetailsRulings.text = rulingText
+        binding.tvDetailsRarity.text = card.rarity
+        binding.tvFlavorText.text = card.flavor
 
         binding.wvDetailsWebView.loadUrl(card.imageUrl)
         binding.wvDetailsWebView.settings.javaScriptEnabled = true

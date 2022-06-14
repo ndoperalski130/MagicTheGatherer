@@ -21,6 +21,7 @@ data class CardObject(
     val set: String,
     val setName: String,
     val text: String,
+    val flavor: String,
     val artist: String,
     val number: String,
     val rulings: List<Ruling>,
