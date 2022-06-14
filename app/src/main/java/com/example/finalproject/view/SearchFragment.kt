@@ -54,7 +54,7 @@ class SearchFragment : Fragment() {
 
     private fun configureObserver()
     {
-        if(!binding.etSearchName.text.isNullOrBlank() && binding.spinRarity.selectedItem.toString() == "Select rarity...")
+        if(!binding.etSearchName.text.isNullOrBlank())
         {
             cardViewModel2 = CardViewModel(binding.etSearchName.text.toString(), null ,CardsRepositoryImpl())
             cardViewModel2.cards.observe(viewLifecycleOwner){response ->

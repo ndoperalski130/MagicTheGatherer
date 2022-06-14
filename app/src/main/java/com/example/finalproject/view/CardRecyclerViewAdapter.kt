@@ -28,9 +28,9 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
     {
         fun onBind(card: CardObject)
         {
-            val jaceUrl = card.imageUrl
+            //val jaceUrl = card.imageUrl
             //jaceUrl.replace("http", "https")
-            println(jaceUrl)
+            //println(jaceUrl)
             /*Glide.with(binding.ivMagicCardView)
                 .load(jaceUrl)
                 .error(android.R.drawable.stat_notify_error)
@@ -39,14 +39,20 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
             // this next stuff sucks ass
             // implement better webviews google >:(
 
-            binding.wvTestWebView.loadUrl(card.imageUrl)
-            binding.wvTestWebView.settings.javaScriptEnabled = false
-            binding.wvTestWebView.settings.loadWithOverviewMode = true
-            binding.wvTestWebView.settings.useWideViewPort = true
 
-            binding.wvTestWebView.webViewClient = WebViewClient()
+            if(!card.imageUrl.isNullOrBlank())
+            {
+                binding.wvTestWebView.loadUrl(card.imageUrl)
 
-            println(card.cmc)
+                binding.wvTestWebView.settings.javaScriptEnabled = false
+                binding.wvTestWebView.settings.loadWithOverviewMode = true
+                binding.wvTestWebView.settings.useWideViewPort = true
+
+                binding.wvTestWebView.webViewClient = WebViewClient()
+            }
+
+
+            //println(card.cmc)
             //binding.tvCMC.text = card.cmc.toString()
             binding.tvManaCost.text = card.manaCost
             binding.tvCardName.text = card.name

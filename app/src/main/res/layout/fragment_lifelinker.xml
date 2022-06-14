@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
@@ -12,12 +13,14 @@
         android:enabled="true"
         android:id="@+id/btnDecrementButton"
         android:layout_gravity="start"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_weight="1"
         />
 
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="120dp"
+       android:textColor="@color/white"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +40,7 @@
         android:layout_height="match_parent"
         android:visibility="visible"
         android:enabled="true"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:id="@+id/btnIncrementButton"
         android:layout_gravity="end"
         android:layout_weight="1"
