@@ -1,5 +1,6 @@
 package com.example.finalproject.view
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.media.Image
@@ -7,8 +8,11 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
 import androidx.core.view.drawToBitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -44,18 +48,37 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
             // implement better webviews google >:(
 
             // if our imageurl isn't blank or null, there's an image for the card
-            if(!card.imageUrl.isNullOrBlank())
-            {
                 binding.wvTestWebView.loadUrl(card.imageUrl)
 
                 binding.wvTestWebView.settings.javaScriptEnabled = false
                 binding.wvTestWebView.settings.loadWithOverviewMode = true
                 binding.wvTestWebView.settings.useWideViewPort = true
 
-                binding.pbLoading.visibility = View.GONE
+                //binding.pbLoading.visibility = View.GONE
 
-                binding.wvTestWebView.webViewClient = WebViewClient()
-            }
+                binding.wvTestWebView.webViewClient = object : WebViewClient(){
+                    override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?)
+                    {
+                        binding.pbLoading.visibility = View.VISIBLE
+                        super.onPageStarted(view, url, favicon)
+                    }
+
+                    override fun onPageFinished(view: WebView?, url: String?) {
+                        binding.pbLoading.visibility = View.GONE
+                        super.onPageFinished(view, url)
+                    }
+
+                    override fun onReceivedError(
+                        view: WebView?,
+                        request: WebResourceRequest?,
+                        error: WebResourceError?
+                    ) {
+
+                        super.onReceivedError(view, request, error)
+                        view?.destroy()
+                    }
+                }
+
 
 
             //println(card.cmc)

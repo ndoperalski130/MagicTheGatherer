@@ -30,6 +30,11 @@ class SearchFragment : Fragment() {
 
     private lateinit var cardViewModel2 : CardViewModel
 
+    override fun onResume() {
+        configureObserver()
+        super.onResume()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

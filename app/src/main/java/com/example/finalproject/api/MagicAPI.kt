@@ -15,8 +15,11 @@ interface MagicAPI {
 
     @GET("cards")
     suspend fun getCardWithName(
-        @Query(NAME) name: String?
+        @Query(NAME) name: String,
+        @Query(RARITY) rarity: String?
     ) : Response<CardsResponse>
+
+
 
     @GET("cards")
     suspend fun getCardWithRarity(

@@ -3,7 +3,6 @@ package com.example.finalproject.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.finalproject.model.Card
 import com.example.finalproject.model.CardsResponse
 import com.example.finalproject.repository.CardsRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
@@ -16,12 +15,18 @@ class CardViewModel(
     private val repoID: CardsRepositoryImpl) : ViewModel() {
 
     init {
-        if (name != null) {
-            getCardWithName(name)
+        if (name != null && rarity != "Select rarity...") {
+            getCardWithName(name, rarity)
         }
-        else if (rarity != null)
+        else if (name != null && rarity == "Select rarity...")
         {
-            getCardWithRarity(rarity)
+            getCardWithName(name, null)
+        }
+        else if(name.isNullOrEmpty() && rarity != "Select rarity...")
+        {
+            if (rarity != null) {
+                getCardWithRarity(rarity)
+            }
         }
     }
 
@@ -29,10 +34,10 @@ class CardViewModel(
 
     val cards : LiveData<CardsResponse> get() = _cards
 
-    private fun getCardWithName(name: String)
+    private fun getCardWithName(name: String, rarity: String?)
     {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repoID.getCardWithName(name)
+            val response = repoID.getCardWithName(name, rarity)
             _cards.postValue(response)
         }
     }

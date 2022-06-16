@@ -5,16 +5,16 @@ import com.example.finalproject.model.CardsResponse
 
 interface CardsRepository {
 
-    suspend fun getCardWithName(name: String?) : CardsResponse
-    suspend fun getCardWithRarity(rarity: String?) : CardsResponse
+    suspend fun getCardWithName(name: String, rarity: String?) : CardsResponse
+    suspend fun getCardWithRarity(rarity: String) : CardsResponse
 }
 
 class CardsRepositoryImpl(private val service: MagicAPI = MagicAPI.getService()
 ) : CardsRepository
 {
-    override suspend fun getCardWithName(name: String?): CardsResponse
+    override suspend fun getCardWithName(name: String, rarity: String?): CardsResponse
     {
-        val response = service.getCardWithName(name = name)
+        val response = service.getCardWithName(name = name, rarity = rarity)
 
         return if(response.isSuccessful)
         {
@@ -27,7 +27,7 @@ class CardsRepositoryImpl(private val service: MagicAPI = MagicAPI.getService()
 
     }
 
-    override suspend fun getCardWithRarity(rarity: String?): CardsResponse {
+    override suspend fun getCardWithRarity(rarity: String): CardsResponse {
         val response = service.getCardWithRarity(rarity = rarity)
 
         return if(response.isSuccessful)
