@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/layoutTop"
+        android:layout_margin="20dp"
         >
 
         <TextView
@@ -44,13 +45,14 @@
             />
 
         <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:id="@+id/spinRarity"
             android:entries="@array/rarities"
             app:layout_constraintTop_toTopOf="@id/tvRarityHandle"
             app:layout_constraintBottom_toBottomOf="@id/tvRarityHandle"
             app:layout_constraintStart_toEndOf="@id/tvRarityHandle"
+            app:layout_constraintEnd_toEndOf="parent"
             />
 
         <Space

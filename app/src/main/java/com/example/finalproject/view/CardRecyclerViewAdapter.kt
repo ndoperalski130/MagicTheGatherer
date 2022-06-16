@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.media.Image
 import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -50,6 +51,8 @@ class CardRecyclerViewAdapter(private val list: MutableList<CardObject> = mutabl
                 binding.wvTestWebView.settings.javaScriptEnabled = false
                 binding.wvTestWebView.settings.loadWithOverviewMode = true
                 binding.wvTestWebView.settings.useWideViewPort = true
+
+                binding.pbLoading.visibility = View.GONE
 
                 binding.wvTestWebView.webViewClient = WebViewClient()
             }

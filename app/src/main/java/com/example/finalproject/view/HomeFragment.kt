@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentHomeBinding
-import com.example.finalproject.databinding.FragmentLifelinkerBinding
+
 
 class HomeFragment : Fragment() {
 
+
     private var _binding : FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
-
-    private lateinit var searchButton: Button
-    private lateinit var lifelinkerButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,14 +24,14 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
         binding.btnLifelinkerButton.setOnClickListener {
-            Toast.makeText(context, "Toast", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "Toast", Toast.LENGTH_LONG).show()
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fcvContainer, LifelinkerFragment())
+                .replace(R.id.fcvContainer, LifelinkerContainer4Fragment())
                 .addToBackStack("lifelinker")
                 .commit()
         }
         binding.btnSearchButton.setOnClickListener {
-            Toast.makeText(context, "Search", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "Search", Toast.LENGTH_LONG).show()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fcvContainer, SearchFragment())
                 .addToBackStack("search")
